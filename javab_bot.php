@@ -20,7 +20,14 @@ if ( sizeof($request_array['events']) > 0 )
             if( $event['message']['type'] == 'text' )
             {
                 $text = $event['message']['text'];
-                $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
+//                $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
+
+                if (strpos($text, 'เปิด') !== false) {
+                    $reply_message = 'turn-on';
+                }else
+                {
+                    $reply_message = 'turn-off';
+                }
 
 //                if($text == 'รถมีทั้งหมดกี่รุ่น')
 //                {
