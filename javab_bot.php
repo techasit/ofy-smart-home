@@ -51,7 +51,7 @@ if ( sizeof($request_array['events']) > 0 )
         }
         else
             $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
-        $reply_message = '$request_array';
+        $reply_message = '  ' . $request_array;
         if( strlen($reply_message) > 0 )
         {
             //$reply_message = iconv("tis-620","utf-8",$reply_message);
