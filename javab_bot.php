@@ -14,18 +14,17 @@ if ( sizeof($request_array['events']) > 0 )
     {
         $reply_message = '';
         $reply_token = $event['replyToken'];
+        
+      <?php
 
-        {
-  "type": "button",
-  "action": {
-    "type": "uri",
-    "label": "Tap me",
-    "uri": "https://example.com"
-  }
-  "style": "primary",
-  "color": "#0000ff"
-}
-      
+$actions = array (
+  New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("yes", "ans=y"),
+  New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("no", "ans=N")
+);
+$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("confim message", $actions);
+$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("confim message", $button);
+$response = $bot->replyMessage($event->getReplyToken(), $outputText);
+        
         if ( $event['type'] == 'message' )
         {
             if( $event['message']['type'] == 'text' )
