@@ -68,6 +68,7 @@ if ( sizeof($request_array['events']) > 0 )
         }
     }
 }
+$reply_message = $request_array;
 
 echo "OK";
 
