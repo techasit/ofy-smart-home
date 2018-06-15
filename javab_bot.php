@@ -20,7 +20,7 @@ if ( sizeof($request_array['events']) > 0 )
             if( $event['message']['type'] == 'text' )
             {
                 $text = $event['message']['text'];
-//                $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
+                $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
 
                 if (strpos($text, 'เปิด') !== false) {
                     $reply_message = 'turn-on';
@@ -29,18 +29,18 @@ if ( sizeof($request_array['events']) > 0 )
                     $reply_message = 'turn-off';
                 }
 
-//                if($text == 'รถมีทั้งหมดกี่รุ่น')
-//                {
-//                    $reply_message = 'คุณต้องการถามถึงรถรุ่น Yaris หรือ Yaris ATIV?';
-//
-//                }else if($text == 'Yaris')
-//                {
-//                    $reply_message = 'มีทั้งหมด 4 รุ่น ดังนี้';
-//
-//                }else if($text == 'Yaris ATIV')
-//                {
-//                    $reply_message = 'มีทั้งหมด 5 รุ่น ดังนี้ xxxxxx';
-//                }
+                if($text == 'รถมีทั้งหมดกี่รุ่น')
+               {
+                   $reply_message = 'คุณต้องการถามถึงรถรุ่น Yaris หรือ Yaris ATIV?';
+
+               }else if($text == 'Yaris')
+               {
+                   $reply_message = 'มีทั้งหมด 4 รุ่น ดังนี้';
+
+               }else if($text == 'Yaris ATIV')
+               {
+                   $reply_message = 'มีทั้งหมด 5 รุ่น ดังนี้ xxxxxx';
+               }
 
             }
             else
