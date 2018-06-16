@@ -1,6 +1,9 @@
 <?php
 
-$strAccessToken = "ACCESS_TOKEN";
+$API_URL = 'https://api.line.me/v2/bot/message/reply';
+$ACCESS_TOKEN = 'jqcef/Cwv9mlugBqub57sx4Pa+LcB4wGBtf9f92NLuFqEN92x/g4M9Mj1j+DILZWgzCdj11gRgSVbTt3cTjOf+xNKgXrBmDylAor1n7fOb64X90b+VSD+c/K3ylq3UidMhttW8aJjZBvgk9hEhdNlgdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
+$POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
+
 
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
@@ -9,7 +12,7 @@ $strUrl = "https://api.line.me/v2/bot/message/reply";
 
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
-$arrHeader[] = "Authorization: Bearer {$strAccessToken}";
+$arrHeader[] = "Authorization: Bearer {$ACCESS_TOKEN}";
 
 if($arrJson['events'][0]['message']['text'] == "สวัสดี"){
     $arrPostData = array();
