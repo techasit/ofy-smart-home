@@ -7,6 +7,7 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
+
 if ( sizeof($request_array['events']) > 0 )
 {
 
@@ -14,33 +15,34 @@ if ( sizeof($request_array['events']) > 0 )
     {
         $reply_message = '';
         $reply_token = $event['replyToken'];
-
+        
+        
         if ( $event['type'] == 'message' )
         {
             if( $event['message']['type'] == 'text' )
             {
                 $text = $event['message']['text'];
-//                $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
+                $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
 
-                if (strpos($text, 'เปิด') !== false) {
-                    $reply_message = 'turn-on';
-                }else
-                {
-                    $reply_message = 'turn-off';
-                }
+           //     if (strpos($text, 'เปิด') !== false) {
+             //       $reply_message = 'turn-on';
+               // }else
+               // {
+              //      $reply_message = 'turn-off';
+               // }
 
-//                if($text == 'รถมีทั้งหมดกี่รุ่น')
-//                {
-//                    $reply_message = 'คุณต้องการถามถึงรถรุ่น Yaris หรือ Yaris ATIV?';
-//
-//                }else if($text == 'Yaris')
-//                {
-//                    $reply_message = 'มีทั้งหมด 4 รุ่น ดังนี้';
-//
-//                }else if($text == 'Yaris ATIV')
-//                {
-//                    $reply_message = 'มีทั้งหมด 5 รุ่น ดังนี้ xxxxxx';
-//                }
+                if($text == 'รถมีทั้งหมดกี่รุ่น')
+               {
+                   $reply_message = 'คุณต้องการถามถึงรถรุ่น Yaris หรือ Yaris ATIV?';
+
+               }else if($text == 'Yaris')
+               {
+                   $reply_message = 'มีทั้งหมด 4 รุ่น ดังนี้';
+
+               }else if($text == 'Yaris ATIV')
+               {
+                   $reply_message = 'มีทั้งหมด 5 รุ่น ดังนี้ xxxxxx';
+               }
 
             }
             else
@@ -49,7 +51,7 @@ if ( sizeof($request_array['events']) > 0 )
         }
         else
             $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
-
+        $reply_message = '  ' . json_encode($request_array);
         if( strlen($reply_message) > 0 )
         {
             //$reply_message = iconv("tis-620","utf-8",$reply_message);
